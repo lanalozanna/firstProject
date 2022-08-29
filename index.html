@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Reviews</title>
+    <meta name="keywords" content="html, css, JavaScript" />
+    <meta name="author" content="Svetlana Lozan" />
+    <meta name="description" content="Reviews" />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body class="page">
+    <h1 class="header">Reviews</h1>
+    <div class="info">
+      <img class="info__photo" alt="info__photo" />
+      <h2 class="info__name"></h2>
+      <h2 class="info__job"></h2>
+      <p class="info__description"></p>
+      <div class="info__buttons">
+        <button class="info__button info__button_left"><</button>
+        <button class="info__button info__button_right">></button>
+      </div>
+    </div>
+
+    <script>
+      const clientsList = [
+        {
+          id: 1,
+          name: "Sarrah Johnson",
+          job: "Profession",
+          img: "https://i.pravatar.cc/400?img=38",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        },
+        {
+          id: 2,
+          name: "Harry Protter",
+          job: "Witcher",
+          img: "https://i.pravatar.cc/150?img=22",
+          text: "Harry Potter is the main character in the series. He discovers that he is an eleven-year-old wizard living with his aunt, uncle, and cousin Dursleys in the fictional town of Little Whinging in Surrey.",
+        },
+        {
+          id: 3,
+          name: "Bonny Salma Eglesi",
+          job: "Web-developer",
+          img: "https://i.pravatar.cc/150?img=46",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.em(20)",
+        },
+        {
+          id: 4,
+          name: "Boba Fet",
+          job: "Star-hunter",
+          img: "https://i.pravatar.cc/150?img=64",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.em(20)",
+        },
+        {
+          id: 5,
+          name: "Jack Daniels",
+          job: "Barista",
+          img: "https://i.pravatar.cc/150?img=66",
+          text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.em(20)",
+        },
+      ];
+
+      const photo = document.querySelector(".info__photo");
+      const name = document.querySelector(".info__name");
+      const job = document.querySelector(".info__job");
+      const description = document.querySelector(".info__description");
+
+      const backButton = document.querySelector(".info__button_left");
+      const nextButton = document.querySelector(".info__button_right");
+
+      let currentItem = 0;
+      window.addEventListener("DOMContentLoaded", function () {
+        getClient();
+      });
+
+      function getClient() {
+        const item = clientsList[currentItem];
+        photo.src = item.img;
+        name.textContent = item.name;
+        job.textContent = item.job;
+        description.textContent = item.text;
+      }
+
+      nextButton.addEventListener("click", function () {
+        currentItem++;
+        if (currentItem > clientsList.length - 1) {
+          currentItem = 0;
+        }
+        getClient();
+      });
+
+      backButton.addEventListener("click", function () {
+        currentItem--;
+        if (currentItem < 0) {
+          currentItem = clientsList.length - 1;
+        }
+        getClient();
+      });
+    </script>
+  </body>
+</html>
